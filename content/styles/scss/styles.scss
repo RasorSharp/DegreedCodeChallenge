@@ -1,0 +1,176 @@
+$padding: 25px;
+$borderRadius: 15px;
+$panelHeading: "Arial Black", Helvetica, sans-serif;
+$panelBodyFooter: "Verdana", Helvetica, sans-serif;
+$bodyColor: rgb(227, 236, 243);
+$darkGray: rgb(70, 68, 68);
+$primaryColor: rgb(6, 143, 207);
+$orangeColor: rgb(235, 171, 77);
+
+.movieCard {
+  width:100%;
+  border: 3px solid $darkGray;
+  padding: 0;
+  margin-bottom: 5px;
+  background-color: $bodyColor;
+  
+  @at-root #{&}--rounded{
+    border-radius: $borderRadius;
+  }
+}
+
+.btnGroup{
+  margin-bottom: 20px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  @at-root #{&}--right{
+    float: right;
+  }
+
+  @at-root #{&} button{
+    margin-left: -1px;
+  }
+
+  @at-root #{&} button:first-child{
+    border-radius: $borderRadius 0 0 $borderRadius;
+  }
+
+  @at-root #{&} button:last-child{
+    border-radius: 0 $borderRadius $borderRadius 0;
+  }
+}
+
+.filterBtn{
+  cursor: pointer;
+  border: 2px solid $darkGray;
+  padding: 20px;
+  font-size: 16pt;
+  background-color: white;
+  color: $darkGray;
+
+  @at-root #{&}:hover{
+    background-color: darken(white, 10%);
+  }
+
+  @at-root #{&}--active{
+    background-color: $primaryColor;
+    color: white;
+  }
+
+  @at-root #{&}--active:hover{
+    background-color: darken($primaryColor, 10%);
+  }
+}
+
+.rounded{
+  border-radius: $borderRadius;
+}
+
+@media (min-width: 550px){ 
+  .gridContainer{
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 325px 1fr;
+    grid-template-columns: 325px 1fr;
+  }
+}
+
+.col{
+  padding-left:$padding;
+  padding-top: $padding;
+  padding-bottom: $padding;
+
+  @at-root #{&}--left{
+    -ms-grid-column: 1;
+  }
+
+  @at-root #{&}--right{
+    padding-right: 20px;
+    -ms-grid-column: 2;
+  }
+}
+
+.text-right{
+  text-align: right !important;
+}
+
+.panel {
+  color: rgba(0, 0, 0, .8);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  @at-root #{&}__heading{
+    font-family: $panelHeading;
+    font-size: 20pt;
+    border-bottom: 3px solid lightgray;
+  } 
+
+  @at-root #{&}__heading h1{
+    margin: 0;
+  }
+
+  @at-root #{&}__subHeading {
+    font-family: $panelBodyFooter;
+    font-size: 18pt;
+    padding-top: 5px;
+    display: grid;
+    grid-template-columns: 125px 125px 1fr;
+  }
+
+  @at-root #{&}__body{
+    font-family: $panelBodyFooter;
+    padding-top: 10px;
+    font-size: 20pt;
+    flex: 1;
+  }
+
+  @at-root #{&}__footer{
+    font-family: $panelBodyFooter;
+    vertical-align:bottom;
+    font-size: 20pt;
+    text-align: right;
+  }
+}
+
+.linkBtn {
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 10px;
+
+  @at-root #{&}--large{
+    padding: 14px 25px;
+  }
+
+  @at-root #{&}--small{
+    padding: 4px 8px;
+  }
+
+  @at-root #{&}--orange{
+    background-color: $orangeColor;
+    color: white;
+
+    @at-root #{&}:hover{
+      background-color: darken($orangeColor, 10%);
+    }
+  }
+
+  @at-root #{&}--noClick{
+    background-color: $bodyColor;
+    color: $darkGray;
+    border: 2px solid $darkGray;
+    cursor: default;
+  }
+
+  @at-root #{&}--noDecoration{
+    background-color: $bodyColor;
+    color: black;
+    cursor: default;
+  }
+}

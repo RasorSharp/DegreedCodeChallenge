@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <title>Movie Viewer</title>
+    <script src="https://az168019.vo.msecnd.net/scripts/libs/modernizr.custom.js"></script>
+    <link href="content/styles/css/styles.css" rel="stylesheet">
+</head>
+
+<body ng-app="dgMovieApp">
+    <div ng-controller="MovieController">
+        <div class="btnGroup btnGroup--right">
+            <button ng-repeat="decade in decades" ng-click="setDecade(decade)" title="{{decade}}'s" class="filterBtn" ng-class="{'filterBtn--active' : decade == selectedDecade}">{{decade}}'s</button>
+        </div>
+        <div ng-repeat="movie in movieList | filter:decadeFilter" class="gridContainer movieCard movieCard--rounded">
+            <div class="col col--left">
+                <img ng-src="content/images/{{movie.Poster}}" alt="{{movie.Title}}" class="rounded" title="{{movie.Title}}" />
+            </div>
+            <div class="col col--right">
+                <div class="panel">
+                    <header class="panel__heading">
+                        <h1>{{ movie.Title }}</h1>
+                    </header>
+                    <div class="panel__subHeading">
+                        <div class="linkBtn linkBtn--small linkBtn--noClick" title="Movie Rating">{{ movie.Rated }}</div>
+                        <div class="linkBtn linkBtn--small linkBtn--noDecoration" title="Movie Runtime">{{ movie.Runtime }}</div>
+                        <div class="linkBtn linkBtn--small linkBtn--noDecoration text-right" title="Movie Release Date">{{ movie.Released }}</div>
+                    </div>
+                    <div class="panel__body">
+                        {{ movie.Plot }}
+                    </div>
+                    <footer class="panel__footer">
+                        <a ng-href="{{movie.ImdbURL}}" target="_blank" title="View movie details on the IMDB Website" class="linkBtn linkBtn--large linkBtn--orange">View On IMDB</a>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.18/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/MovieController.js"></script>
+    <script src="scripts/omdbapi.js"></script>
+</body>
+</html>
